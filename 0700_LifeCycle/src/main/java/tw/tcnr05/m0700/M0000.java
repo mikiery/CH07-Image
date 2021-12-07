@@ -32,6 +32,7 @@ public class M0000 extends AppCompatActivity {
                 break;
             case R.id.action_settings:
                 this.finish();
+
                 break;
         }
 

@@ -3,12 +3,15 @@ package tw.tcnr01.m0701;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import tw.tcnr01.m0701.GridAdapter;
@@ -76,4 +79,35 @@ public class M0701 extends AppCompatActivity implements
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         imgSwi.setImageResource(imgArr[position]);
     }
+    //*******************************************************************************************
+    @Override
+    public void onBackPressed() {
+//super.onBackPressed();//不執行這行
+        Toast.makeText(getApplication(), "禁用返回鍵", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.m0701, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        switch (item.getItemId()) {
+            case R.id.action_about:
+                break;
+            case R.id.action_settings:
+                this.finish();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+    //*******************************************************************************************
 }
